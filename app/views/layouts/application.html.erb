@@ -8,12 +8,17 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
   </head>
 
   <body>
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
-  <%= yield %>
-  <%= render "shared/footer"%>
+  <div class="main-container">
+    <%= yield %>
+  </div>
+  <div class="footer-down">
+    <%= render "shared/footer"%>
+  </div>
   </body>
 </html>
