@@ -10,3 +10,16 @@
   background: #4D04C4;
   color: white;
 }
+
+.btn-volver {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: rgb(220, 147, 2);
+  transition: background 0.3s ease;
+}
+
+.btn-volver:hover {
+  background: rgb(220, 147, 2);
+  color: white;
+}

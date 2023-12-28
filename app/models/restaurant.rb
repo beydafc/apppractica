@@ -21,7 +21,7 @@ class Restaurant < ApplicationRecord
   pg_search_scope :global_search,
   against: [ :name, :description, :address ],
   associated_against: {
-    categories: [ :name]
+    categories: [:name]
   },
   using: {
     tsearch: { prefix: true }

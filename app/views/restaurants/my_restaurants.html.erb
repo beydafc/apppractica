@@ -1,8 +1,8 @@
-<div class=“container mt-2”>
+<div class="container mt-5 shadow p-3">
   <h3>Mis restaurantes</h3>
-  <%= link_to “Agregar”, new_restaurant_path, class: “btn btn-primary btn-sm” %>
+  <%= link_to "Agregar", new_restaurant_path, class: "btn btn-fltat btn-sm" %>
   <hr>
-  <table class=“table”>
+  <table class="table text-align-center">
   <thead>
     <tr>
       <th scope=“col”>Photo</th>
@@ -15,20 +15,20 @@
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
-        <th scope=“row”><%= image_tag restaurant.photo, size: “40x40” %></th>
+        <th scope=“row”><%= image_tag restaurant.photo, size: "40x40" %></th>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address%></td>
-        <td><%= restaurant.created_at %></td>
+        <td><%= restaurant.created_at.strftime("%d/%m/%Y") %></td>
         <td>
-          <%= link_to restaurant_path(restaurant.id) do %>
-            <i class=“fa-solid fa-eye”></i>
+          <%= link_to restaurant_path(restaurant.id), class: "text-decoration-none" do %>
+            <i class="fa-solid fa-eye"></i>
           <% end %> |
-          <%= link_to edit_restaurant_path(restaurant.id), class: “text-warning” do %>
-            <i class=“fa-solid fa-pencil”></i>
+          <%= link_to edit_restaurant_path(restaurant.id), class: "text-decoration-none", class: "text-warning" do %>
+            <i class="fa-solid fa-pencil"></i>
           <% end %>
           |
-          <%= link_to restaurant_path(restaurant.id), class: “text-danger” do %>
-            <i class=“fa-solid fa-trash-can”></i>
+          <%= link_to restaurant_path(restaurant.id), class: "text-decoration-none", class: "text-danger" do %>
+            <i class="fa-solid fa-trash-can"></i>
           <% end %>
         </td>
       </tr>

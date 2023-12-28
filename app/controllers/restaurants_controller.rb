@@ -2,12 +2,30 @@ class RestaurantsController < ApplicationController
 
   # GET/restaurants
   def index
-    @restaurants = Restaurant.all
+    if params[:query].present?
+      @restaurants = Restaurant.global_search(params[:query])
+    else
+      @restaurants = Restaurant.all
+    end
+
+    @markers = @restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude,
+      }
+    end
   end
 
   # GET/restautrants/:id
   def show
     @restaurant = Restaurant.find(params[:id])
+
+    @markers = [
+      {
+        lat: @restaurant.latitude,
+        lng: @restaurant.longitude
+      }
+    ]
   end
 
   # GET/restautrants/new

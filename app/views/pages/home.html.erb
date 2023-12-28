@@ -1,8 +1,14 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "bannerrestaurante.png"%>');">
   <div class="container">
     <h1>Restaurant YA!</h1>
-    <p>Lo mejores restaurantes de México y el mundo en un solo lugar</p>
-    <a class="btn btn-flat" href="#">Explorar</a>
+    <p class="mb-3">Lo mejores restaurantes de México y el mundo en un solo lugar</p>
+    <%= link_to "Explorar", restaurants_path, class: "btn btn-volver mb-3"%>
+      <div class="form-group has-search mt-3 w-100 mx-auto">
+        <%= form_with url: restaurants_path, method: :get do %>
+        <span class="fa-solid fa-magnifying-glass lupa"></span>
+        <%= text_field_tag :query, nil, class: "form-control", placeholder:"Elige a los mejores restaurantes del mundo"%>
+        <% end %>
+      </div>
   </div>
 </div>
 <hr>
@@ -10,13 +16,7 @@
 <div class="container mt-4">
   <div class="row mb-5">
     <% @restaurants.each do |restaurant|%>
-      <div class="col-4">
-        <%= link_to restaurant_path(restaurant), class: "text-decoration-none" do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= url_for restaurant.photo %>')">
-            <%= restaurant.name %>
-          </div>
-        <% end %>
-      </div>
+        <%= render "restaurants/restaurant", restaurant: restaurant%>
     <% end %>
   </div>
 </div>
